@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Результат обработки</title>
+</head>
+<body>
+    <h1>Результат обработки данных</h1>
+    <h2>Исходные данные</h2>
+    <table border="1">
+        <tr>
+            <th>Start</th>
+            <th>End</th>
+            <th>Tmin</th>
+            <th>Tmax</th>
+            <th>Cmin</th>
+            <th>Cmax</th>
+            <th>Cmin косв</th>
+            <th>Cmax косв</th>
+        </tr>
+        {% for task in tasks %}
+        <tr>
+            <td>{{ task.start }}</td>
+            <td>{{ task.end }}</td>
+            <td>{{ task.Tmin }}</td>
+            <td>{{ task.Tmax }}</td>
+            <td>{{ task.Cmin }}</td>
+            <td>{{ task.Cmax }}</td>
+            <td>{{ task.Cmin_kosv }}</td>
+            <td>{{ task.Cmax_kosv }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Результат вычислений</h2>
+    <table border="1">
+        <tr>
+            <th>T</th>
+            <th>Cпр</th>
+            <th>Скос</th>
+        </tr>
+        {% for result in calc.0 %}
+        <tr>
+            <td>{{ result.T }}</td>
+            <td>{{ result.Cpr }}</td>
+            <td>{{ result.Ckos }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h3>Итоговые значения:</h3>
+    <p>Сумма прямых затрат: {{ calc.1 }}</p>
+    <p>Сумма косвенных затрат: {{ calc.2 }}</p>
+    <p>Суммарные затраты: {{ calc.1|add:calc.2 }}</p>
+</body>
+</html>
