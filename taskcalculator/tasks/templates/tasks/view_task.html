@@ -51,7 +51,8 @@
     <p>Сумма прямых затрат: {{ calc.1 }}</p>
     <p>Сумма косвенных затрат: {{ calc.2 }}</p>
     <p>Суммарные затраты: {{ calc.1|add:calc.2 }}</p>
-    
+    <a href="{% url 'generate_gantt_chart' task_id %}" target="_blank">Построить диаграмму Ганта</a><hr>
+
     <a href="{% url 'task_input' %}">Назад к вводу</a>
 </body>
 </html>
